@@ -13,5 +13,12 @@ Tools: `draft_report` (ungated, writes `reports/<id>.html`, returns url + sha256
 ```
 REPORT_DESK_SECRET=<secret> PUBLIC_URL=https://<tunnel-host> PORT=4848 node src/index.js
 ```
+
+Set `TFY_API_KEY` (a TrueFoundry virtual-account key with Mlf Project Editor on the ML repo),
+`TFY_HOST` and `TFY_ML_REPO` to store drafts as **TrueFoundry artifact versions** in the
+tenant's own blob storage instead of the local `reports/` folder. `draft_report` then returns
+a signed S3 read URL (1 hour) and a `storage` block with the artifact FQN, and
+`publish_report` re-reads the stored object to verify the sha256. Finalized versions are
+read-only through the platform API.
 Register `https://<tunnel-host>/mcp` in MCP Gateway as a remote (streamable HTTP) server with
 Header Auth `x-report-desk-secret`.
