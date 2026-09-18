@@ -1,0 +1,11 @@
+{
+  "name": "mock-report-mcp",
+  "version": "1.0.0",
+  "description": "Demo-only MCP server (streamable HTTP) that drafts an HTML treasury report and gates publish_report behind TrueFoundry MCP Tool Approval. Serves drafts over HTTP as a stand-in for S3. No real data.",
+  "type": "module",
+  "scripts": { "start": "node src/index.js" },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "zod": "^3.23.8"
+  }
+}
